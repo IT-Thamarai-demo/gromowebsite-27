@@ -80,43 +80,50 @@ const Index = () => {
   ];
 
   const portfolioProjects = [
-    {
-      title: "Sunrise Mobile Store",
-      category: "Mobile Shop",
-      image: portfolioMobileStore,
-      description: "Modern mobile store website with product showcase and repair services"
-    },
-    {
-      title: "Grand Palace Hotel",
-      category: "Hotel",
-      image: portfolioHotel,
-      description: "Luxury hotel website with booking system and room galleries"
-    },
-    {
-      title: "Fashion Hub Boutique",
-      category: "Local Shop",
-      image: portfolioFashion,
-      description: "Elegant fashion store with product catalog and online ordering"
-    },
-    {
-      title: "TeaCafe Express",
-      category: "Tea Stall",
-      image: portfolioTeaStall,
-      description: "Cozy tea stall website with menu and location details"
-    },
-    {
-      title: "ElectroMart Store",
-      category: "E-commerce",
-      image: portfolioElectronics,
-      description: "Full e-commerce platform with payment integration"
-    },
-    {
-      title: "Green Grocery",
-      category: "Local Shop",
-      image: portfolioGrocery,
-      description: "Fresh grocery store with online ordering system"
-    }
-  ];
+  {
+    title: "Sunrise Mobile Store",
+    category: "Mobile Shop",
+    image: portfolioMobileStore,
+    description: "Modern mobile store website with product showcase and repair services",
+    link: "https://gromo.in/portfolio/sunrise-mobile-store"
+  },
+  {
+    title: "Grand Palace Hotel",
+    category: "Hotel",
+    image: portfolioHotel,
+    description: "Luxury hotel website with booking system and room galleries",
+    link: "https://gromo.in/portfolio/grand-palace-hotel"
+  },
+  {
+    title: "Fashion Hub Boutique",
+    category: "Local Shop",
+    image: portfolioFashion,
+    description: "Elegant fashion store with product catalog and online ordering",
+    link: "https://gromo.in/portfolio/fashion-hub"
+  },
+  {
+    title: "TeaCafe Express",
+    category: "Tea Stall",
+    image: portfolioTeaStall,
+    description: "Cozy tea stall website with menu and location details",
+    link: "https://gromo.in/portfolio/teacafe-express"
+  },
+  {
+    title: "ElectroMart Store",
+    category: "E-commerce",
+    image: portfolioElectronics,
+    description: "Full e-commerce platform with payment integration",
+    link: "https://gromo.in/portfolio/electromart"
+  },
+  {
+    title: "Green Grocery",
+    category: "Local Shop",
+    image: portfolioGrocery,
+    description: "Fresh grocery store with online ordering system",
+    link: "https://gromo.in/portfolio/green-grocery"
+  }
+];
+
 
   const whyChooseUs = [
     {
