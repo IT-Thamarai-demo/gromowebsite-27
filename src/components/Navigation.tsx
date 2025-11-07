@@ -11,16 +11,16 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-sm z-50 border-b">
+    <nav className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-md shadow-layered z-50 border-b">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2 group perspective-container">
             <img 
               src="/gromo-logo.png" 
               alt="Gromo Logo" 
-              className="w-8 h-8"
+              className="w-8 h-8 transition-transform group-hover:scale-110 group-hover:rotate-3 drop-shadow-md"
             />
-            <span className="text-xl font-bold text-gray-900">Gromo</span>
+            <span className="text-xl font-bold text-gray-900 gradient-text">Gromo</span>
           </Link>
 
           {/* Desktop Navigation */}

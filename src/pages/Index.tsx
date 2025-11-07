@@ -222,46 +222,46 @@ const Index = () => {
           </div>
           <div className="mt-16 max-w-4xl mx-auto">
             <HeroSlider />
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl p-8 animate-slide-in-left border border-white/20">
-              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 items-center justify-items-center opacity-80">
-                <div className="flex flex-col items-center gap-2">
-                  <Store className="h-12 w-12 text-white" />
+            <div className="glass-effect rounded-2xl shadow-layered p-8 animate-slide-in-left border border-white/20 perspective-container">
+              <div className="grid grid-cols-2 md:grid-cols-5 gap-4 items-center justify-items-center opacity-90">
+                <div className="flex flex-col items-center gap-2 tilt-hover">
+                  <Store className="h-12 w-12 text-white drop-shadow-lg" />
                   <img 
-                    src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+                    src="/gromo-logo.png" 
                     alt="Gromo" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <ShoppingCart className="h-12 w-12 text-white" />
+                <div className="flex flex-col items-center gap-2 tilt-hover">
+                  <ShoppingCart className="h-12 w-12 text-white drop-shadow-lg" />
                   <img 
-                    src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+                    src="/gromo-logo.png" 
                     alt="Gromo" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <Smartphone className="h-12 w-12 text-white" />
+                <div className="flex flex-col items-center gap-2 tilt-hover">
+                  <Smartphone className="h-12 w-12 text-white drop-shadow-lg" />
                   <img 
-                    src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+                    src="/gromo-logo.png" 
                     alt="Gromo" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <Building className="h-12 w-12 text-white" />
+                <div className="flex flex-col items-center gap-2 tilt-hover">
+                  <Building className="h-12 w-12 text-white drop-shadow-lg" />
                   <img 
-                    src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+                    src="/gromo-logo.png" 
                     alt="Gromo" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 </div>
-                <div className="flex flex-col items-center gap-2">
-                  <Coffee className="h-12 w-12 text-white" />
+                <div className="flex flex-col items-center gap-2 tilt-hover">
+                  <Coffee className="h-12 w-12 text-white drop-shadow-lg" />
                   <img 
-                    src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+                    src="/gromo-logo.png" 
                     alt="Gromo" 
-                    className="w-6 h-6"
+                    className="w-6 h-6 drop-shadow-lg"
                   />
                 </div>
               </div>
@@ -319,9 +319,11 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-slide-up card-stagger interactive-hover">
-                <CardContent className="p-6">
-                  <service.icon className="h-12 w-12 text-primary mb-4 animate-bounce-in" />
+              <Card key={index} className="card-3d card-stagger interactive-hover group">
+                <CardContent className="p-6 relative">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mb-4 shadow-layered animate-float-3d group-hover:scale-110 transition-transform">
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
                     {service.title}
                   </h3>
@@ -353,20 +355,20 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {portfolioProjects.map((project, index) => (
-              <Card key={index} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-zoom-in card-stagger overflow-hidden card-hover">
+              <Card key={index} className="card-3d card-stagger overflow-hidden group perspective-container">
                 <div className="relative overflow-hidden">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ExternalLink className="h-8 w-8 text-white animate-bounce-in" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <ExternalLink className="h-10 w-10 text-white animate-bounce-in layer-depth-3" />
                   </div>
                 </div>
-                <CardContent className="p-6">
+                <CardContent className="p-6 relative">
                   <div className="mb-2">
-                    <span className="inline-block bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full shimmer">
+                    <span className="inline-block bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-medium px-3 py-1 rounded-full shimmer shadow-layered">
                       {project.category}
                     </span>
                   </div>
@@ -396,10 +398,10 @@ const Index = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {whyChooseUs.map((benefit, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-all duration-300 hover:-translate-y-1 animate-rotate-fade card-stagger bg-white/70 backdrop-blur-sm interactive-hover">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4 animate-glow-pulse">
-                    <benefit.icon className="h-8 w-8 text-white animate-float" />
+              <Card key={index} className="card-3d card-stagger bg-white/80 backdrop-blur-sm group text-center">
+                <CardContent className="p-6 relative">
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-layered animate-float-3d group-hover:rotate-6 transition-transform">
+                    <benefit.icon className="h-10 w-10 text-white animate-float" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
                     {benefit.title}
