@@ -25,7 +25,7 @@ import {
   ChevronRight,
   ExternalLink
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Carousel,
   CarouselContent,
@@ -34,6 +34,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import HeroSlider from "@/components/HeroSlider";
+import ParallaxSection from "@/components/ParallaxSection";
+import ParallaxCard from "@/components/ParallaxCard";
+import ScrollReveal from "@/components/ScrollReveal";
 
 // Import images
 import heroBanner from "@/assets/hero-banner.jpg";
@@ -51,6 +54,16 @@ import testimonialMeera from "@/assets/testimonial-meera.jpg";
 import testimonialSuresh from "@/assets/testimonial-suresh.jpg";
 
 const Index = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const services = [
     {
       icon: Store,
@@ -194,16 +207,22 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-20 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0">
+      <section className="pt-20 pb-16 relative overflow-hidden parallax-wrapper">
+        <div 
+          className="absolute inset-0"
+          style={{ transform: `translateY(${scrollY * 0.5}px)` }}
+        >
           <img 
             src={heroBanner} 
             alt="Business owner working on website"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 to-indigo-900/80"></div>
         </div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div 
+          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+          style={{ transform: `translateY(${scrollY * -0.1}px)` }}
+        >
           <div className="text-center max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Get Your Business Online Today with Gromo
@@ -271,67 +290,83 @@ const Index = () => {
       </section>
 
       {/* About Us Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-white relative overflow-hidden">
+        <ParallaxSection speed={0.2} className="absolute inset-0 opacity-5">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"></div>
+        </ParallaxSection>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="animate-slide-in-left">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Who We Are
-                </h2>
-                <p className="text-lg text-gray-600 leading-relaxed mb-4">
-                  Gromo is a startup dedicated to helping local businesses thrive in the digital age. 
-                  We believe that a great website can elevate your shop or stall into a modern digital brand.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  From mobile shops to hotels and tea stalls, we create tailor-made websites 
-                  that fit your brand and customers. Every business — big or small — deserves 
-                  a beautiful online presence.
-                </p>
-              </div>
-              <div className="animate-slide-in-right">
-                <div className="relative rounded-2xl overflow-hidden h-80">
-                  <img 
-                    src={teamPhoto} 
-                    alt="Gromo team working together"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center p-6">
-                    <p className="text-white font-medium text-lg">Building Digital Dreams</p>
+              <ScrollReveal>
+                <div className="animate-slide-in-left">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                    Who We Are
+                  </h2>
+                  <p className="text-lg text-gray-600 leading-relaxed mb-4">
+                    Gromo is a startup dedicated to helping local businesses thrive in the digital age. 
+                    We believe that a great website can elevate your shop or stall into a modern digital brand.
+                  </p>
+                  <p className="text-lg text-gray-600 leading-relaxed">
+                    From mobile shops to hotels and tea stalls, we create tailor-made websites 
+                    that fit your brand and customers. Every business — big or small — deserves 
+                    a beautiful online presence.
+                  </p>
+                </div>
+              </ScrollReveal>
+              <ScrollReveal delay={200}>
+                <div className="animate-slide-in-right">
+                  <div className="relative rounded-2xl overflow-hidden h-80">
+                    <img 
+                      src={teamPhoto} 
+                      alt="Gromo team working together"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end justify-center p-6">
+                      <p className="text-white font-medium text-lg">Building Digital Dreams</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What We Do
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Specialized website solutions for different types of businesses
-            </p>
-          </div>
+      <section className="py-20 bg-gray-50 relative overflow-hidden">
+        <ParallaxSection speed={0.3} className="absolute inset-0 opacity-10">
+          <div className="absolute top-40 right-20 w-64 h-64 bg-primary/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-40 left-20 w-48 h-48 bg-indigo-500/30 rounded-full blur-3xl"></div>
+        </ParallaxSection>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                What We Do
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Specialized website solutions for different types of businesses
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
             {services.map((service, index) => (
-              <Card key={index} className="card-3d card-stagger interactive-hover group">
-                <CardContent className="p-6 relative">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mb-4 shadow-layered animate-float-3d group-hover:scale-110 transition-transform">
-                    <service.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {service.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <ParallaxCard key={index}>
+                <Card className="card-3d card-stagger interactive-hover group h-full">
+                  <CardContent className="p-6 relative">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center mb-4 shadow-layered animate-float-3d group-hover:scale-110 transition-transform">
+                      <service.icon className="h-8 w-8 text-white" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {service.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </ParallaxCard>
             ))}
           </div>
           <div className="text-center">
@@ -345,72 +380,84 @@ const Index = () => {
       {/* Portfolio Section */}
       <section id="portfolio" className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Recent Projects
-            </h2>
-            <p className="text-lg text-gray-600">
-              See how we've helped businesses like yours succeed online
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Our Recent Projects
+              </h2>
+              <p className="text-lg text-gray-600">
+                See how we've helped businesses like yours succeed online
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {portfolioProjects.map((project, index) => (
-              <Card key={index} className="card-3d card-stagger overflow-hidden group perspective-container">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <ExternalLink className="h-10 w-10 text-white animate-bounce-in layer-depth-3" />
+              <ParallaxCard key={index}>
+                <Card className="card-3d card-stagger overflow-hidden group perspective-container h-full">
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <ExternalLink className="h-10 w-10 text-white animate-bounce-in layer-depth-3" />
+                    </div>
                   </div>
-                </div>
-                <CardContent className="p-6 relative">
-                  <div className="mb-2">
-                    <span className="inline-block bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-medium px-3 py-1 rounded-full shimmer shadow-layered">
-                      {project.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2 gradient-text">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {project.description}
-                  </p>
-                </CardContent>
-              </Card>
+                  <CardContent className="p-6 relative">
+                    <div className="mb-2">
+                      <span className="inline-block bg-gradient-to-r from-primary/10 to-primary/5 text-primary text-xs font-medium px-3 py-1 rounded-full shimmer shadow-layered">
+                        {project.category}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2 gradient-text">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm">
+                      {project.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </ParallaxCard>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Gromo Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Gromo?
-            </h2>
-            <p className="text-lg text-gray-600">
-              We're committed to your success with these key advantages
-            </p>
-          </div>
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
+        <ParallaxSection speed={0.15} className="absolute inset-0 opacity-20">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl"></div>
+        </ParallaxSection>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <ScrollReveal>
+            <div className="text-center mb-16 animate-fade-in">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why Choose Gromo?
+              </h2>
+              <p className="text-lg text-gray-600">
+                We're committed to your success with these key advantages
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {whyChooseUs.map((benefit, index) => (
-              <Card key={index} className="card-3d card-stagger bg-white/80 backdrop-blur-sm group text-center">
-                <CardContent className="p-6 relative">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-layered animate-float-3d group-hover:rotate-6 transition-transform">
-                    <benefit.icon className="h-10 w-10 text-white animate-float" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-gray-600">
-                    {benefit.description}
-                  </p>
-                </CardContent>
-              </Card>
+              <ParallaxCard key={index}>
+                <Card className="card-3d card-stagger bg-white/80 backdrop-blur-sm group text-center h-full">
+                  <CardContent className="p-6 relative">
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary via-primary/90 to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-layered animate-float-3d group-hover:rotate-6 transition-transform">
+                      <benefit.icon className="h-10 w-10 text-white animate-float" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3 gradient-text">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-gray-600">
+                      {benefit.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </ParallaxCard>
             ))}
           </div>
         </div>

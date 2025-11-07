@@ -524,3 +524,108 @@
 .tilt-hover:hover {
   animation: tilt-3d 1s ease-in-out;
 }
+
+/* Parallax Effects */
+.parallax-wrapper {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.parallax-layer-slow {
+  will-change: transform;
+}
+
+.parallax-layer-medium {
+  will-change: transform;
+}
+
+.parallax-layer-fast {
+  will-change: transform;
+}
+
+/* Mouse-based parallax */
+.parallax-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+.parallax-card-content {
+  transform: translateZ(30px);
+}
+
+/* Scroll-based animations */
+@keyframes parallax-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px) translateZ(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+.parallax-scroll-fade {
+  animation: parallax-fade-in-up 0.8s ease-out;
+}
+
+/* Multi-layer parallax container */
+.parallax-scene {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.parallax-scene-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Depth-based parallax */
+.parallax-depth-1 {
+  transform: translateZ(10px) scale(0.95);
+}
+
+.parallax-depth-2 {
+  transform: translateZ(20px) scale(0.90);
+}
+
+.parallax-depth-3 {
+  transform: translateZ(30px) scale(0.85);
+}
+
+/* Floating parallax animation */
+@keyframes parallax-float {
+  0%, 100% {
+    transform: translateY(0px) translateZ(0px);
+  }
+  50% {
+    transform: translateY(-15px) translateZ(15px);
+  }
+}
+
+.parallax-float {
+  animation: parallax-float 6s ease-in-out infinite;
+}
+
+/* Background parallax */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: transform;
+}
