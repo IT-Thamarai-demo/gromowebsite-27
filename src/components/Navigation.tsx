@@ -16,7 +16,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+              src="/gromo-logo.png" 
               alt="Gromo Logo" 
               className="w-8 h-8"
             />

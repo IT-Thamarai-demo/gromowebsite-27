@@ -18,7 +18,7 @@ const Preloader = () => {
       <div className="text-center animate-fade-in">
         <div className="mb-6">
           <img 
-            src="/lovable-uploads/f88572c8-ada3-454d-a6c7-a994495023db.png" 
+            src="/gromo-logo.png" 
             alt="Gromo Logo" 
             className="w-24 h-24 mx-auto animate-pulse"
           />
